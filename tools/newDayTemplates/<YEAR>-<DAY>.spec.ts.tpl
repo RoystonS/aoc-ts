@@ -6,12 +6,8 @@ const day = "<DAY>";
 
 describe("<YEAR>-<DAY>", () => {
   it("passes part1 example", () => {
-    const example = `1abc2
-pqr3stu8vwx
-a1b2c3d4e5f
-treb7uchet`;
-
-    expect(puzzle.computePart1(example)).toEqual("142");
+    const example = `???`;
+    expect(puzzle.computePart1(example)).toEqual("!!!");
   });
 
   it("passes part1", () => {
@@ -20,15 +16,8 @@ treb7uchet`;
   });
 
   it("passes part2 example", () => {
-    const example = `two1nine
-eightwothree
-abcone2threexyz
-xtwone3four
-4nineeightseven2
-zoneight234
-7pqrstsixteen`;
-
-    expect(puzzle.computePart2(example)).toEqual("281");
+    const example = `???`;
+    expect(puzzle.computePart2(example)).toEqual("!!!");
   });
 
   it("passes part2", () => {
