@@ -18,11 +18,11 @@ Use `npm start <puzzle-name>`, e.g. `npm start 2023-01`. This simply uses `vites
 
 ## Starting a new puzzle
 
-Use `npm new-day <year> <day>`, e.g. `npm new-day 2023 2` to create an empty template for that day.
+Use `npm run new-day <year> <day>`, e.g. `npm run new-day 2023 2` to create an empty template for that day.
 
 ## Other commands
 
-- `npm lint` runs eslint over the code
+- `npm run lint` runs eslint over the code
 
 ---
 
