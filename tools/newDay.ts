@@ -24,12 +24,9 @@ if (fs.existsSync(dayDir)) {
   process.exit(5);
 }
 
-console.log("dayDir", dayDir);
-fs.mkdirSync(dayDir);
+fs.mkdirSync(dayDir, { recursive: true });
 
 for (const fileName of fs.readdirSync(templateDir)) {
-  console.log("fn", fileName);
-
   const content = fs.readFileSync(path.join(templateDir, fileName), "utf8");
   const templatedContent = content
     .replaceAll("<YEAR>", yearText)
