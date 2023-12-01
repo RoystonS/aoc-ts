@@ -15,5 +15,7 @@ module.exports = {
     "eol-last": ["error", "always"],
     "template-curly-spacing": ["error", "never"],
     "no-multiple-empty-lines": "off",
+    "no-constant-condition": ["error", { checkLoops: false }],
+    "@typescript-eslint/no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
   },
 };
