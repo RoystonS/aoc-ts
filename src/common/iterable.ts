@@ -43,3 +43,41 @@ export function sum(iterator: IterableIterator<number>) {
 export function product(iterator: IterableIterator<number>) {
   return reduce(iterator, (acc, n) => acc * n, 0);
 }
+
+export type ComparisonResult = -1 | 0 | 1;
+
+export function min<T>(
+  iterator: IterableIterator<T>,
+  compare: (a: T, b: T) => ComparisonResult,
+) {
+  const iteratorResult = iterator.next();
+  if (iteratorResult.done) {
+    throw new Error(`Iterator has no elements`);
+  }
+  const firstValue = iteratorResult.value;
+  return reduce(
+    iterator,
+    (previous, current) => {
+      return compare(current, previous) < 0 ? current : previous;
+    },
+    firstValue,
+  );
+}
+
+export function max<T>(
+  iterator: IterableIterator<T>,
+  compare: (a: T, b: T) => ComparisonResult,
+) {
+  const iteratorResult = iterator.next();
+  if (iteratorResult.done) {
+    throw new Error(`Iterator has no elements`);
+  }
+  const firstValue = iteratorResult.value;
+  return reduce(
+    iterator,
+    (previous, current) => {
+      return compare(current, previous) > 0 ? current : previous;
+    },
+    firstValue,
+  );
+}
