@@ -1,3 +1,3 @@
 export function splitLines(input: string): string[] {
-  return input.split(/[\r\n]+/);
+  return input.split(/[\r\n]/);
 }
