@@ -6,7 +6,7 @@ export function some<T>(iterator: IterableIterator<T>): boolean {
 export function* filter<T>(
   iterator: IterableIterator<T>,
   predicate: (value: T) => boolean,
-) {
+): IterableIterator<T> {
   for (const item of iterator) {
     if (predicate(item)) {
       yield item;
@@ -17,7 +17,7 @@ export function* filter<T>(
 export function* map<T, U>(
   iterator: IterableIterator<T>,
   transform: (value: T) => U,
-) {
+): IterableIterator<U> {
   for (const item of iterator) {
     yield transform(item);
   }
@@ -27,7 +27,7 @@ export function reduce<T, U>(
   iterator: IterableIterator<T>,
   reducer: (previousValue: U, currentValue: T) => U,
   initialValue: U,
-) {
+): U {
   let value = initialValue;
 
   for (const item of iterator) {
@@ -36,20 +36,28 @@ export function reduce<T, U>(
   return value;
 }
 
-export function sum(iterator: IterableIterator<number>) {
+export function sum(iterator: IterableIterator<number>): number {
   return reduce(iterator, (acc, n) => acc + n, 0);
 }
 
-export function product(iterator: IterableIterator<number>) {
+export function product(iterator: IterableIterator<number>): number {
   return reduce(iterator, (acc, n) => acc * n, 0);
 }
 
 export type ComparisonResult = -1 | 0 | 1;
 
+export function count(iterator: IterableIterator<any>): number {
+  let count = 0;
+  for (const item of iterator) {
+    count++;
+  }
+  return count;
+}
+
 export function min<T>(
   iterator: IterableIterator<T>,
   compare: (a: T, b: T) => ComparisonResult,
-) {
+): T {
   const iteratorResult = iterator.next();
   if (iteratorResult.done) {
     throw new Error(`Iterator has no elements`);
@@ -67,7 +75,7 @@ export function min<T>(
 export function max<T>(
   iterator: IterableIterator<T>,
   compare: (a: T, b: T) => ComparisonResult,
-) {
+): T {
   const iteratorResult = iterator.next();
   if (iteratorResult.done) {
     throw new Error(`Iterator has no elements`);
