@@ -4,11 +4,11 @@ import type { Puzzle } from "../../../common";
 export const puzzle: Puzzle = {
   computePart1(input) {
     const lines = splitLines(input);
-    const sum = Array.from(filter(identifyNumbers(lines), (x) => x.adjacentSymbols.length > 0)).reduce(
-      (acc, { value }) => acc + value,
-      0,
+    const s = sum(
+      filter(identifyNumbers(lines), (x) => x.adjacentSymbols.length > 0),
+      (x) => x.value,
     );
-    return sum.toString();
+    return s.toString();
   },
   part1Answer: "556367",
 

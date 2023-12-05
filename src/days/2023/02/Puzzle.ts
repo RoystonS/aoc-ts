@@ -1,4 +1,4 @@
-import { assertDefinedAndNotNull, splitLines } from "../../../common";
+import { assertDefinedAndNotNull, product, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
 export const puzzle: Puzzle = {
@@ -28,7 +28,7 @@ export const puzzle: Puzzle = {
     const lines = splitLines(input);
     const games = lines.map(parseLine);
 
-    const powerTotal = games.reduce((acc, game) => {
+    const powerTotal = sum(games.values(), (game) => {
       // Compute the minimum cubes for this game
       const min = new Map<CubeColour, number>();
       for (const handful of game.handfulls) {
@@ -41,9 +41,9 @@ export const puzzle: Puzzle = {
       }
 
       // Multiply the cube counts together
-      const gamePower = Array.from(min.values()).reduce((acc, n) => acc * n, 1);
-      return gamePower + acc;
-    }, 0);
+      const gamePower = product(min.values());
+      return gamePower;
+    });
     return powerTotal.toString();
   },
   part2Answer: "63711",

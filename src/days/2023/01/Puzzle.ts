@@ -1,17 +1,17 @@
-import { assertDefinedAndNotNull, splitLines } from "../../../common";
+import { assertDefinedAndNotNull, map, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
 export const puzzle: Puzzle = {
   computePart1(input) {
     const lines = splitLines(input);
-    const total = lines.map(getNumericDigitsFromLine).reduce((acc, n) => acc + n, 0);
+    const total = sum(map(lines.values(), getNumericDigitsFromLine));
     return total.toString();
   },
   part1Answer: "54953",
 
   computePart2(input) {
     const lines = splitLines(input);
-    const total = lines.map(getNumericOrTextualDigitsFromLine).reduce((acc, n) => acc + n, 0);
+    const total = sum(map(lines.values(), getNumericOrTextualDigitsFromLine));
     return total.toString();
   },
   part2Answer: "53868",

@@ -30,12 +30,24 @@ export function reduce<T, U>(
   return value;
 }
 
-export function sum(iterator: IterableIterator<number>): number {
-  return reduce(iterator, (acc, n) => acc + n, 0);
+export function sum<T>(iterator: IterableIterator<number>): number;
+export function sum<T>(iterator: IterableIterator<T>, selector: (item: T) => number): number;
+export function sum<T>(iterator: IterableIterator<T>, selector?: (item: T) => number): number {
+  if (selector) {
+    return reduce(iterator, (acc, item) => acc + selector(item), 0);
+  } else {
+    return reduce(iterator, (acc, n) => acc + (n as number), 0);
+  }
 }
 
-export function product(iterator: IterableIterator<number>): number {
-  return reduce(iterator, (acc, n) => acc * n, 0);
+export function product<T>(iterator: IterableIterator<number>): number;
+export function product<T>(iterator: IterableIterator<T>, selector: (item: T) => number): number;
+export function product<T>(iterator: IterableIterator<T>, selector?: (item: T) => number): number {
+  if (selector) {
+    return reduce(iterator, (acc, item) => acc * selector(item), 1);
+  } else {
+    return reduce(iterator, (acc, n) => acc * (n as number), 1);
+  }
 }
 
 export type ComparisonResult = -1 | 0 | 1;
