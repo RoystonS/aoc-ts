@@ -3,10 +3,7 @@ export function some<T>(iterator: IterableIterator<T>): boolean {
   return !next.done;
 }
 
-export function* filter<T>(
-  iterator: IterableIterator<T>,
-  predicate: (value: T) => boolean,
-): IterableIterator<T> {
+export function* filter<T>(iterator: IterableIterator<T>, predicate: (value: T) => boolean): IterableIterator<T> {
   for (const item of iterator) {
     if (predicate(item)) {
       yield item;
@@ -14,10 +11,7 @@ export function* filter<T>(
   }
 }
 
-export function* map<T, U>(
-  iterator: IterableIterator<T>,
-  transform: (value: T) => U,
-): IterableIterator<U> {
+export function* map<T, U>(iterator: IterableIterator<T>, transform: (value: T) => U): IterableIterator<U> {
   for (const item of iterator) {
     yield transform(item);
   }
@@ -54,10 +48,7 @@ export function count(iterator: IterableIterator<any>): number {
   return count;
 }
 
-export function min<T>(
-  iterator: IterableIterator<T>,
-  compare: (a: T, b: T) => ComparisonResult,
-): T {
+export function min<T>(iterator: IterableIterator<T>, compare: (a: T, b: T) => ComparisonResult): T {
   const iteratorResult = iterator.next();
   if (iteratorResult.done) {
     throw new Error(`Iterator has no elements`);
@@ -72,10 +63,7 @@ export function min<T>(
   );
 }
 
-export function max<T>(
-  iterator: IterableIterator<T>,
-  compare: (a: T, b: T) => ComparisonResult,
-): T {
+export function max<T>(iterator: IterableIterator<T>, compare: (a: T, b: T) => ComparisonResult): T {
   const iteratorResult = iterator.next();
   if (iteratorResult.done) {
     throw new Error(`Iterator has no elements`);

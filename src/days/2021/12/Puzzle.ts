@@ -7,11 +7,7 @@ export class Graph<TNodeItem = undefined, TEdgeItem = undefined> {
     return new Node(item);
   }
 
-  public addEdge(
-    node1: Node<TNodeItem, TEdgeItem>,
-    node2: Node<TNodeItem, TEdgeItem>,
-    item: TEdgeItem,
-  ) {
+  public addEdge(node1: Node<TNodeItem, TEdgeItem>, node2: Node<TNodeItem, TEdgeItem>, item: TEdgeItem) {
     const edge = new Edge(item, node1, node2);
     node1.edges.push(edge);
     node2.edges.push(edge);

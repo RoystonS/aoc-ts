@@ -8,9 +8,7 @@ export const puzzle: Puzzle = {
 
     runFolds(instructions.points, instructions.folds.slice(0, 1));
 
-    const uniqueCoords = new Set(
-      instructions.points.map(({ x, y }) => `${x},${y}`),
-    );
+    const uniqueCoords = new Set(instructions.points.map(({ x, y }) => `${x},${y}`));
 
     return uniqueCoords.size.toString();
   },
@@ -81,9 +79,7 @@ function dumpPoints(points: Point[]): string[] {
     maxY = Math.max(maxY, point.y);
   }
 
-  const arr = Array.from(new Array(maxY + 1), () =>
-    new Array(maxX + 1).fill("."),
-  );
+  const arr = Array.from(new Array(maxY + 1), () => new Array(maxX + 1).fill("."));
 
   for (const point of points) {
     arr[point.y][point.x] = "#";

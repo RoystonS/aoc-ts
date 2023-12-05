@@ -4,18 +4,14 @@ import type { Puzzle } from "../../../common";
 export const puzzle: Puzzle = {
   computePart1(input) {
     const lines = splitLines(input);
-    const total = lines
-      .map(getNumericDigitsFromLine)
-      .reduce((acc, n) => acc + n, 0);
+    const total = lines.map(getNumericDigitsFromLine).reduce((acc, n) => acc + n, 0);
     return total.toString();
   },
   part1Answer: "54953",
 
   computePart2(input) {
     const lines = splitLines(input);
-    const total = lines
-      .map(getNumericOrTextualDigitsFromLine)
-      .reduce((acc, n) => acc + n, 0);
+    const total = lines.map(getNumericOrTextualDigitsFromLine).reduce((acc, n) => acc + n, 0);
     return total.toString();
   },
   part2Answer: "53868",
@@ -33,30 +29,17 @@ function getNumericDigitsFromLine(line: string) {
   return parseInt(combined, 10);
 }
 
-const textualDigits = [
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-];
+const textualDigits = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
 // Map from "one" -> "1", etc.
-const textualDigitMap = new Map(
-  textualDigits.map((text, i) => [text, (i + 1).toString()]),
-);
+const textualDigitMap = new Map(textualDigits.map((text, i) => [text, (i + 1).toString()]));
 // Add in "1" -> "1", etc.
 for (let i = 1; i <= 9; i++) {
   textualDigitMap.set(i.toString(), i.toString());
 }
 
 // Regex pattern to match all textual digits
-const textualDigitPattern =
-  "(" + Array.from(textualDigitMap.keys()).join("|") + ")";
+const textualDigitPattern = "(" + Array.from(textualDigitMap.keys()).join("|") + ")";
 
 // Regex to extract first textual digit
 const firstDigitRegex = new RegExp(`${textualDigitPattern}.*`);

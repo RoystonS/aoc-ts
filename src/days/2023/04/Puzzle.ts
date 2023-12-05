@@ -1,10 +1,4 @@
-import {
-  assertDefinedAndNotNull,
-  count,
-  filter,
-  splitLines,
-  sum,
-} from "../../../common";
+import { assertDefinedAndNotNull, count, filter, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
 export const puzzle: Puzzle = {
@@ -12,11 +6,7 @@ export const puzzle: Puzzle = {
     const lines = splitLines(input);
     const cards = lines.map(parseLine);
 
-    return sum(
-      cards
-        .map((c) => (c.matches === 0 ? 0 : Math.pow(2, c.matches - 1)))
-        .values(),
-    ).toString();
+    return sum(cards.map((c) => (c.matches === 0 ? 0 : Math.pow(2, c.matches - 1))).values()).toString();
   },
   part1Answer: "26346",
 
@@ -29,24 +19,15 @@ export const puzzle: Puzzle = {
       count: number;
     }
 
-    const cardCounts = cards.map(
-      (card) => ({ card, count: 1 }) as CardWithCount,
-    );
+    const cardCounts = cards.map((card) => ({ card, count: 1 }) as CardWithCount);
 
     for (let c = 0; c < cardCounts.length; c++) {
       const { card, count } = cardCounts[c];
 
       if (card.matches > 0) {
         let firstWinningTicketIndex = c + 1;
-        let lastWinningTicketIndex = Math.min(
-          cardCounts.length - 1,
-          c + card.matches,
-        );
-        for (
-          let i = firstWinningTicketIndex;
-          i <= lastWinningTicketIndex;
-          i++
-        ) {
+        let lastWinningTicketIndex = Math.min(cardCounts.length - 1, c + card.matches);
+        for (let i = firstWinningTicketIndex; i <= lastWinningTicketIndex; i++) {
           cardCounts[i].count += count;
         }
       }
@@ -79,9 +60,7 @@ function parseLine(line: string): Card {
     id: parseInt(cardNumStr),
     winningNumbers,
     actualNumbers,
-    matches: count(
-      filter(actualNumbers.values(), (n) => winningNumbers.has(n)),
-    ),
+    matches: count(filter(actualNumbers.values(), (n) => winningNumbers.has(n))),
   };
 }
 

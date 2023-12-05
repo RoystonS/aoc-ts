@@ -68,13 +68,7 @@ export function step(values: number[][]): [number, number[][]] {
         const r = row + rowDelta;
         const c = col + colDelta;
 
-        if (
-          r < 0 ||
-          c < 0 ||
-          r >= rows ||
-          c >= cols ||
-          (r === row && c === col)
-        ) {
+        if (r < 0 || c < 0 || r >= rows || c >= cols || (r === row && c === col)) {
           continue;
         }
 
@@ -90,10 +84,7 @@ function createArray<T>(rows: number, columns: number): T[][] {
   return Array.from(new Array(rows), () => new Array(columns));
 }
 
-export function runSteps(
-  state: number[][],
-  count: number,
-): [number, number[][]] {
+export function runSteps(state: number[][], count: number): [number, number[][]] {
   let totalFlashes = 0;
   for (let i = 0; i < count; i++) {
     const [flashesThisStep, afterStep] = step(state);

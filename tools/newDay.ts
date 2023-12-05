@@ -28,9 +28,7 @@ fs.mkdirSync(dayDir, { recursive: true });
 
 for (const fileName of fs.readdirSync(templateDir)) {
   const content = fs.readFileSync(path.join(templateDir, fileName), "utf8");
-  const templatedContent = content
-    .replaceAll("<YEAR>", yearText)
-    .replaceAll("<DAY>", dayText);
+  const templatedContent = content.replaceAll("<YEAR>", yearText).replaceAll("<DAY>", dayText);
   const outputFilename = path.join(
     dayDir,
     fileName

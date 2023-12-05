@@ -4,9 +4,10 @@ import type { Puzzle } from "../../../common";
 export const puzzle: Puzzle = {
   computePart1(input) {
     const lines = splitLines(input);
-    const sum = Array.from(
-      filter(identifyNumbers(lines), (x) => x.adjacentSymbols.length > 0),
-    ).reduce((acc, { value }) => acc + value, 0);
+    const sum = Array.from(filter(identifyNumbers(lines), (x) => x.adjacentSymbols.length > 0)).reduce(
+      (acc, { value }) => acc + value,
+      0,
+    );
     return sum.toString();
   },
   part1Answer: "556367",
@@ -31,10 +32,7 @@ export const puzzle: Puzzle = {
 
     // Gears are the '*' symbols with exactly two adjacent numbers.
     const gears = filter(gearNumbers.entries(), (x) => x[1].length === 2);
-    const ratiosOfGears = map(
-      gears,
-      ([_gearPosition, values]) => values[0] * values[1],
-    );
+    const ratiosOfGears = map(gears, ([_gearPosition, values]) => values[0] * values[1]);
 
     return sum(ratiosOfGears).toString();
   },
@@ -51,9 +49,7 @@ function* identifyNumbers(lines: string[]) {
       const xStart = match.index!;
       const xEnd = xStart + match[0].length - 1;
 
-      const adjacentSymbols = Array.from(
-        getNearSymbols(i, xStart, xEnd, lines),
-      );
+      const adjacentSymbols = Array.from(getNearSymbols(i, xStart, xEnd, lines));
       yield { value: parseInt(match[0]), adjacentSymbols };
     }
   })) {
@@ -61,12 +57,7 @@ function* identifyNumbers(lines: string[]) {
   }
 }
 
-function* getNearSymbols(
-  row: number,
-  startCol: number,
-  endCol: number,
-  lines: string[],
-) {
+function* getNearSymbols(row: number, startCol: number, endCol: number, lines: string[]) {
   const totalRows = lines.length;
   const totalCols = lines[0].length;
 

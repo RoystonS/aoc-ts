@@ -6,9 +6,7 @@ const day = "02";
 
 describe("2023-02", () => {
   test("parseLine", () => {
-    const result = parseLine(
-      "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green",
-    );
+    const result = parseLine("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green");
     const expected: Game = {
       id: 5,
       handfulls: [

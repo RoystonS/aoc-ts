@@ -88,9 +88,6 @@ function inc<T>(map: Map<T, number>, key: T, delta = 1) {
   map.set(key, (map.get(key) ?? 0) + delta);
 }
 
-function compareCounts(
-  [_e1, count1]: [string, number],
-  [_e2, count2]: [string, number],
-) {
+function compareCounts([_e1, count1]: [string, number], [_e2, count2]: [string, number]) {
   return count1 < count2 ? -1 : count1 > count2 ? 1 : 0;
 }
