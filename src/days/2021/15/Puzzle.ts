@@ -6,8 +6,9 @@ export const puzzle: Puzzle = {
   computePart1(input) {
     const lines = splitLines(input);
     const graph = new GraphImpl(lines);
-    const dij = new Dijkstra(graph, vertexKey(0, 0));
-    const distance = dij.run(vertexKey(graph.rowCount - 1, graph.colCount - 1));
+    const colCount = lines[0].length;
+    const dij = new Dijkstra(graph, vertexKey(0, 0, colCount));
+    const distance = dij.run(vertexKey(graph.rowCount - 1, graph.colCount - 1, colCount));
     return distance.toString();
   },
   part1Answer: "393",
@@ -32,14 +33,17 @@ export const puzzle: Puzzle = {
     });
 
     const graph = new GraphImpl(largerMap);
-    const dij = new Dijkstra(graph, vertexKey(0, 0));
-    const distance = dij.run(vertexKey(graph.rowCount - 1, graph.colCount - 1));
+    const colCount = largerMap[0].length;
+    const dij = new Dijkstra(graph, vertexKey(0, 0, colCount));
+    const target = vertexKey(graph.rowCount - 1, graph.colCount - 1, colCount);
+    const distance = dij.run(target);
+
     return distance.toString();
   },
   part2Answer: "2823",
 };
 
-class GraphImpl implements Graph<string> {
+class GraphImpl implements Graph<number> {
   private readonly rows: number[][];
   public readonly rowCount: number;
   public readonly colCount: number;
@@ -51,47 +55,49 @@ class GraphImpl implements Graph<string> {
     this.colCount = this.rows[0].length;
   }
 
-  public *getVertices(): IterableIterator<string> {
+  public *getVertices(): IterableIterator<number> {
     const { rowCount, colCount } = this;
 
     for (let row = 0; row < rowCount; row++) {
       for (let col = 0; col < colCount; col++) {
-        yield vertexKey(row, col);
+        yield vertexKey(row, col, colCount);
       }
     }
   }
 
-  public *getNeighbours(vertex: string): IterableIterator<string> {
-    const { row, col } = splitVertexKey(vertex);
+  public *getNeighbours(vertex: number): IterableIterator<number> {
     const { rowCount, colCount } = this;
+    const { row, col } = splitVertexKey(vertex, colCount);
 
     if (row < rowCount - 1) {
-      yield vertexKey(row + 1, col);
+      yield vertexKey(row + 1, col, colCount);
     }
     if (col < colCount - 1) {
-      yield vertexKey(row, col + 1);
+      yield vertexKey(row, col + 1, colCount);
     }
     if (row > 0) {
-      yield vertexKey(row - 1, col);
+      yield vertexKey(row - 1, col, colCount);
     }
     if (col > 0) {
-      yield vertexKey(row, col - 1);
+      yield vertexKey(row, col - 1, colCount);
     }
   }
 
-  public getWeight(from: string, to: string): number {
-    const { row, col } = splitVertexKey(to);
+  public getWeight(from: number, to: number): number {
+    const { colCount } = this;
+    const { row, col } = splitVertexKey(to, colCount);
     return this.rows[row][col];
   }
 }
 
-function vertexKey(row: number, col: number) {
-  return `${row},${col}`;
+function vertexKey(row: number, col: number, colCount: number) {
+  return row * colCount + col;
 }
 
-function splitVertexKey(key: string) {
-  const bits = key.split(/,/);
-  return { row: parseInt(bits[0], 10), col: parseInt(bits[1], 10) };
+function splitVertexKey(key: number, colCount: number) {
+  const col = key % colCount;
+  const row = Math.floor(key / colCount);
+  return { row, col };
 }
 
 function incrementString(s: string) {
