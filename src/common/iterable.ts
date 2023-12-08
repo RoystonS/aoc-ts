@@ -76,7 +76,7 @@ export function min<T>(iterator: IterableIterator<T>, compare: (a: T, b: T) => C
 }
 
 export function minNumber(iterator: IterableIterator<number>): number {
-  return min(iterator, (a, b) => (a < b ? -1 : a > b ? 1 : 0));
+  return min(iterator, compareNumbers);
 }
 
 export function max<T>(iterator: IterableIterator<T>, compare: (a: T, b: T) => ComparisonResult): T {
@@ -92,4 +92,17 @@ export function max<T>(iterator: IterableIterator<T>, compare: (a: T, b: T) => C
     },
     firstValue,
   );
+}
+
+export function maxNumber(iterator: IterableIterator<number>): number {
+  return max(iterator, compareNumbers);
+}
+
+function compareNumbers(a: number, b: number) {
+  return a < b ? -1 : a > b ? 1 : 0;
+}
+export function* range(from: number, to: number): IterableIterator<number> {
+  for (let i = from; i <= to; i++) {
+    yield i;
+  }
 }
