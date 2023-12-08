@@ -18,7 +18,7 @@ describe("2021-15", () => {
 2311944581`.trim();
 
   it("passes part1 example", () => {
-    expect(puzzle.computePart1(example)).toEqual("40");
+    expect(puzzle.computePart1(example)).toEqual(40);
   });
 
   it("passes part1", () => {
@@ -27,7 +27,7 @@ describe("2021-15", () => {
   });
 
   it("passes part2 example", () => {
-    expect(puzzle.computePart2(example)).toEqual("315");
+    expect(puzzle.computePart2(example)).toEqual(315);
   });
 
   it("passes part2", () => {

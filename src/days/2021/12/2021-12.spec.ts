@@ -13,7 +13,7 @@ A-b
 b-d
 A-end
 b-end`;
-    expect(puzzle.computePart1(example)).toEqual("10");
+    expect(puzzle.computePart1(example)).toEqual(10);
   });
 
   it("passes part1 second example", () => {
@@ -27,7 +27,7 @@ HN-end
 kj-sa
 kj-HN
 kj-dc`;
-    expect(puzzle.computePart1(example)).toEqual("19");
+    expect(puzzle.computePart1(example)).toEqual(19);
   });
 
   it("passes part1", () => {
@@ -43,7 +43,7 @@ A-b
 b-d
 A-end
 b-end`;
-    expect(puzzle.computePart2(example)).toEqual("36");
+    expect(puzzle.computePart2(example)).toEqual(36);
   });
 
   it("passes part2", () => {

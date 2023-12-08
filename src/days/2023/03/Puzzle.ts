@@ -1,16 +1,16 @@
 import { MultiMap, filter, map, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const lines = splitLines(input);
     const s = sum(
       filter(identifyNumbers(lines), (x) => x.adjacentSymbols.length > 0),
       (x) => x.value,
     );
-    return s.toString();
+    return s;
   },
-  part1Answer: "556367",
+  part1Answer: 556367,
 
   computePart2(input) {
     const lines = splitLines(input);
@@ -34,9 +34,9 @@ export const puzzle: Puzzle = {
     const gears = filter(gearNumbers.entries(), (x) => x[1].length === 2);
     const ratiosOfGears = map(gears, ([_gearPosition, values]) => values[0] * values[1]);
 
-    return sum(ratiosOfGears).toString();
+    return sum(ratiosOfGears);
   },
-  part2Answer: "89471771",
+  part2Answer: 89471771,
 };
 
 /**

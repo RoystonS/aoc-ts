@@ -1,7 +1,7 @@
 import { assertDefinedAndNotNull, product, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const lines = splitLines(input);
     const games = lines.map(parseLine);
@@ -20,9 +20,9 @@ export const puzzle: Puzzle = {
         idTotal += game.id;
       }
     }
-    return idTotal.toString();
+    return idTotal;
   },
-  part1Answer: "2439",
+  part1Answer: 2439,
 
   computePart2(input) {
     const lines = splitLines(input);
@@ -44,9 +44,9 @@ export const puzzle: Puzzle = {
       const gamePower = product(min.values());
       return gamePower;
     });
-    return powerTotal.toString();
+    return powerTotal;
   },
-  part2Answer: "63711",
+  part2Answer: 63711,
 };
 
 // Game N: X blue, Y red; Z green, A blue

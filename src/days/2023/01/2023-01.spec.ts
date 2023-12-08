@@ -11,7 +11,7 @@ pqr3stu8vwx
 a1b2c3d4e5f
 treb7uchet`;
 
-    expect(puzzle.computePart1(example)).toEqual("142");
+    expect(puzzle.computePart1(example)).toEqual(142);
   });
 
   it("passes part1", () => {
@@ -28,7 +28,7 @@ xtwone3four
 zoneight234
 7pqrstsixteen`;
 
-    expect(puzzle.computePart2(example)).toEqual("281");
+    expect(puzzle.computePart2(example)).toEqual(281);
   });
 
   it("passes part2", () => {

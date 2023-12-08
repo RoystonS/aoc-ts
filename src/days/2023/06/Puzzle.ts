@@ -1,7 +1,7 @@
-import { count, filter, map, product, range, splitLines } from "../../../common";
+import { product, splitLines } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const lines = splitLines(input);
 
@@ -10,16 +10,16 @@ export const puzzle: Puzzle = {
 
     const waysToBeat = times.map((time, i) => computeWaysToBeatRecord(time, distances[i]));
 
-    return product(waysToBeat.values()).toString();
+    return product(waysToBeat.values());
   },
 
-  part1Answer: "275724",
+  part1Answer: 275724,
 
   computePart2(input) {
     return this.computePart1(input.replaceAll(" ", ""));
   },
 
-  part2Answer: "37286485",
+  part2Answer: 37286485,
 };
 
 function computeWaysToBeatRecord(raceTime: number, recordDistance: number) {

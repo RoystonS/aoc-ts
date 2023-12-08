@@ -2,7 +2,7 @@ import { splitLines } from "../../../common";
 import type { Puzzle } from "../../../common";
 import * as os from "os";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<string> = {
   computePart1(input) {
     const instructions = parse(input);
 

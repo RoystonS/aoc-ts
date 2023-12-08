@@ -1,7 +1,7 @@
-import { assertDefined, map, min, minNumber, splitLines } from "../../../common";
+import { minNumber, splitLines } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const { seeds, sections } = parse(input);
     const seedRanges = seeds.map(
@@ -14,9 +14,9 @@ export const puzzle: Puzzle = {
 
     const rangeFroms = traverseMultiple("seed", seedRanges, sections).map((r) => r.from);
 
-    return minNumber(rangeFroms.values()).toString();
+    return minNumber(rangeFroms.values());
   },
-  part1Answer: "278755257",
+  part1Answer: 278755257,
 
   computePart2(input) {
     const { seeds, sections } = parse(input);
@@ -27,9 +27,9 @@ export const puzzle: Puzzle = {
 
     const rangeFroms = traverseMultiple("seed", seedRanges, sections).map((r) => r.from);
 
-    return minNumber(rangeFroms.values()).toString();
+    return minNumber(rangeFroms.values());
   },
-  part2Answer: "26829166",
+  part2Answer: 26829166,
 };
 
 interface Mapping {

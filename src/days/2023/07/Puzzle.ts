@@ -1,16 +1,16 @@
 import { assertDefinedAndNotNull, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     return run(input, 1);
   },
-  part1Answer: "251058093",
+  part1Answer: 251058093,
 
   computePart2(input) {
     return run(input, 2);
   },
-  part2Answer: "249781879",
+  part2Answer: 249781879,
 };
 
 function run(input: string, part: number) {
@@ -26,7 +26,7 @@ function run(input: string, part: number) {
   // Sort in ascending score order
   plays.sort((play1, play2) => play1.score - play2.score);
 
-  return sum(plays.map((play, i) => play.bid * (i + 1)).values()).toString();
+  return sum(plays.map((play, i) => play.bid * (i + 1)).values());
 }
 interface Play {
   hand: string;

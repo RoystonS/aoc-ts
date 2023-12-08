@@ -26,7 +26,7 @@ CC -> N
 CN -> C`.trim();
 
   it("passes part1 example", () => {
-    expect(puzzle.computePart1(example)).toEqual("1588");
+    expect(puzzle.computePart1(example)).toEqual(1588);
   });
 
   it("passes part1", () => {
@@ -35,7 +35,7 @@ CN -> C`.trim();
   });
 
   it("passes part2 example", () => {
-    expect(puzzle.computePart2(example)).toEqual("2188189693529");
+    expect(puzzle.computePart2(example)).toEqual(2188189693529);
   });
 
   it("passes part2", () => {

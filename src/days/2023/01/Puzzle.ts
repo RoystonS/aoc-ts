@@ -1,20 +1,20 @@
 import { assertDefinedAndNotNull, map, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const lines = splitLines(input);
     const total = sum(map(lines.values(), getNumericDigitsFromLine));
-    return total.toString();
+    return total;
   },
-  part1Answer: "54953",
+  part1Answer: 54953,
 
   computePart2(input) {
     const lines = splitLines(input);
     const total = sum(map(lines.values(), getNumericOrTextualDigitsFromLine));
-    return total.toString();
+    return total;
   },
-  part2Answer: "53868",
+  part2Answer: 53868,
 };
 
 function getNumericDigitsFromLine(line: string) {

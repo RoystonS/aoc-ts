@@ -8,7 +8,7 @@ describe("2023-05", () => {
   const example = readInput(year, day, "example.txt");
 
   it("passes part1 example", () => {
-    expect(puzzle.computePart1(example)).toEqual("35");
+    expect(puzzle.computePart1(example)).toEqual(35);
   });
 
   it("passes part1", () => {
@@ -17,7 +17,7 @@ describe("2023-05", () => {
   });
 
   it("passes part2 example", () => {
-    expect(puzzle.computePart2(example)).toEqual("46");
+    expect(puzzle.computePart2(example)).toEqual(46);
   });
 
   it("passes part2", () => {

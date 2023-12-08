@@ -1,14 +1,14 @@
 import { assertDefinedAndNotNull, count, filter, splitLines, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const lines = splitLines(input);
     const cards = lines.map(parseLine);
 
-    return sum(cards.map((c) => (c.matches === 0 ? 0 : Math.pow(2, c.matches - 1))).values()).toString();
+    return sum(cards.map((c) => (c.matches === 0 ? 0 : Math.pow(2, c.matches - 1))).values());
   },
-  part1Answer: "26346",
+  part1Answer: 26346,
 
   computePart2(input) {
     const lines = splitLines(input);
@@ -33,9 +33,9 @@ export const puzzle: Puzzle = {
       }
     }
 
-    return sum(cardCounts.map((c) => c.count).values()).toString();
+    return sum(cardCounts.map((c) => c.count).values());
   },
-  part2Answer: "8467762",
+  part2Answer: 8467762,
 };
 
 interface Card {

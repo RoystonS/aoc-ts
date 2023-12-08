@@ -35,17 +35,17 @@ export class Edge<TNodeItem = undefined, TEdgeItem = undefined> {
   ) {}
 }
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     return run(input, false);
   },
 
-  part1Answer: "4495",
+  part1Answer: 4495,
 
   computePart2(input) {
     return run(input, true);
   },
-  part2Answer: "131254",
+  part2Answer: 131254,
 };
 
 function isLowerCase(ch: string) {
@@ -138,5 +138,5 @@ function run(input: string, allowOneSmallCaveTwice: boolean) {
     }
   }
 
-  return finalPaths.size.toString();
+  return finalPaths.size;
 }

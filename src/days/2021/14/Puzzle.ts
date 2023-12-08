@@ -1,16 +1,16 @@
 import { assertDefinedAndNotNull, max, min, splitLines } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     return runPolymerization(input, 10);
   },
-  part1Answer: "4244",
+  part1Answer: 4244,
 
   computePart2(input) {
     return runPolymerization(input, 40);
   },
-  part2Answer: "4807056953866",
+  part2Answer: 4807056953866,
 };
 
 interface Data {
@@ -29,7 +29,7 @@ function runPolymerization(input: string, steps: number) {
   const minimum = min(data.elementCounts.entries(), compareCounts);
   const maximum = max(data.elementCounts.entries(), compareCounts);
 
-  return (maximum[1] - minimum[1]).toString();
+  return maximum[1] - minimum[1];
 }
 
 function parse(input: string): Data {

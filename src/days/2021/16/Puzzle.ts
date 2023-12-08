@@ -1,21 +1,21 @@
-import { maxNumber, min, minNumber, product, sum } from "../../../common";
+import { maxNumber, minNumber, product, sum } from "../../../common";
 import type { Puzzle } from "../../../common";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const bits = emitBits(input);
     const processor = new PacketProcessor(bits);
     processor.readPacket();
-    return processor.versionSum.toString();
+    return processor.versionSum;
   },
-  part1Answer: "877",
+  part1Answer: 877,
 
   computePart2(input) {
     const bits = emitBits(input);
     const processor = new PacketProcessor(bits);
-    return processor.readPacket().toString();
+    return processor.readPacket();
   },
-  part2Answer: "194435634456",
+  part2Answer: 194435634456,
 };
 
 function* emitBits(message: string) {

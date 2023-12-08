@@ -2,22 +2,22 @@ import { splitLines } from "../../../common";
 import type { Puzzle } from "../../../common";
 import { Deque } from "../../../common/Deque";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const initialState = linesToArray(splitLines(input));
     const [totalFlashes, _] = runSteps(initialState, 100);
 
-    return totalFlashes.toString();
+    return totalFlashes;
   },
-  part1Answer: "1719",
+  part1Answer: 1719,
 
   computePart2(input) {
     const initialState = linesToArray(splitLines(input));
     const steps = runStepsUntilSynchronised(initialState);
 
-    return steps.toString();
+    return steps;
   },
-  part2Answer: "232",
+  part2Answer: 232,
 };
 
 export function linesToArray(lines: string[]) {

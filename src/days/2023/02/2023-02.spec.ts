@@ -37,7 +37,7 @@ describe("2023-02", () => {
   Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green`;
 
   it("passes part1 example", () => {
-    expect(puzzle.computePart1(example)).toEqual("8");
+    expect(puzzle.computePart1(example)).toEqual(8);
   });
 
   it("passes part1", () => {
@@ -46,7 +46,7 @@ describe("2023-02", () => {
   });
 
   it("passes part2 example", () => {
-    expect(puzzle.computePart2(example)).toEqual("2286");
+    expect(puzzle.computePart2(example)).toEqual(2286);
   });
 
   it("passes part2", () => {

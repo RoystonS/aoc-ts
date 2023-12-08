@@ -2,16 +2,16 @@ import { splitLines } from "../../../common";
 import type { Puzzle } from "../../../common";
 import { Dijkstra, Graph } from "../../../common/Dijkstra";
 
-export const puzzle: Puzzle = {
+export const puzzle: Puzzle<number> = {
   computePart1(input) {
     const lines = splitLines(input);
     const graph = new GraphImpl(lines);
     const colCount = lines[0].length;
     const dij = new Dijkstra(graph, vertexKey(0, 0, colCount));
     const distance = dij.run(vertexKey(graph.rowCount - 1, graph.colCount - 1, colCount));
-    return distance.toString();
+    return distance;
   },
-  part1Answer: "393",
+  part1Answer: 393,
 
   computePart2(input) {
     const lines = splitLines(input);
@@ -38,9 +38,9 @@ export const puzzle: Puzzle = {
     const target = vertexKey(graph.rowCount - 1, graph.colCount - 1, colCount);
     const distance = dij.run(target);
 
-    return distance.toString();
+    return distance;
   },
-  part2Answer: "2823",
+  part2Answer: 2823,
 };
 
 class GraphImpl implements Graph<number> {

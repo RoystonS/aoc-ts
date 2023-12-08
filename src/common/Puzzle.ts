@@ -1,6 +1,6 @@
-export type Puzzle = {
-  computePart1(input: string): string;
-  readonly part1Answer: string;
-  computePart2(input: string): string;
-  readonly part2Answer: string;
+export type Puzzle<T> = {
+  computePart1(input: string): T;
+  readonly part1Answer: T;
+  computePart2(input: string): T;
+  readonly part2Answer: T;
 };

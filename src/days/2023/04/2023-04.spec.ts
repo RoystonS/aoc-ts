@@ -14,7 +14,7 @@ Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
 Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11`.trim();
 
   it("passes part1 example", () => {
-    expect(puzzle.computePart1(example)).toEqual("13");
+    expect(puzzle.computePart1(example)).toEqual(13);
   });
 
   it("passes part1", () => {
@@ -23,7 +23,7 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11`.trim();
   });
 
   it("passes part2 example", () => {
-    expect(puzzle.computePart2(example)).toEqual("30");
+    expect(puzzle.computePart2(example)).toEqual(30);
   });
 
   it("passes part2", () => {
