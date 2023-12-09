@@ -106,3 +106,52 @@ export function* range(from: number, to: number): IterableIterator<number> {
     yield i;
   }
 }
+
+export function* cycle<T>(values: T[]): IterableIterator<T> {
+  if (values.length === 0) {
+    return;
+  }
+
+  while (true) {
+    yield* values.values();
+  }
+}
+
+export function* chain<T>(...iterables: IterableIterator<T>[]): IterableIterator<T> {
+  for (const iterable of iterables) {
+    yield* iterable;
+  }
+}
+
+function gcdPair(a: number, b: number): number {
+  if (a === 0) {
+    return b;
+  }
+
+  return gcdPair(b % a, a);
+}
+
+function lcmPair(a: number, b: number): number {
+  return (a * b) / gcdPair(a, b);
+}
+
+export function gcd(values: IterableIterator<number>) {
+  let result = values.next().value;
+
+  for (const value of values) {
+    result = gcdPair(result, value);
+    if (result === 1) {
+      return 1;
+    }
+  }
+  return result;
+}
+
+export function lcm(values: IterableIterator<number>) {
+  let result = values.next().value;
+
+  for (const value of values) {
+    result = lcmPair(result, value);
+  }
+  return result;
+}
